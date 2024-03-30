@@ -15,7 +15,7 @@
         android:layout_marginTop="40dp"
         android:gravity="top|center"
         android:textColor="@color/white"
-        android:textSize="40dp" />
+        android:textSize="40sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -24,70 +24,81 @@
         android:layout_margin="40dp"
         android:gravity="top|center"
         android:textColor="@color/white"
-        android:textSize="15dp" />
+        android:textSize="15sp" />
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="90dp" />
+        android:layout_height="90sp" />
 
     <EditText
+        android:id="@+id/txtRegApodo"
         android:layout_width="200dp"
-        android:layout_gravity="center"
-        android:background="@drawable/stl_edittext"
-        app:backgroundTint="@null"
-        android:maxLength="8"
-        android:layout_marginBottom="20dp"
-        android:padding="12dp"
         android:layout_height="wrap_content"
-        android:hint="Introduzca apodo"
-        android:textColor="@color/white"
-
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/stl_edittext"
         android:gravity="center"
-        android:textColorHint="@color/white" />
+        android:hint="Introduzca apodo"
+        android:maxLength="8"
+        android:padding="12sp"
+        android:autofillHints="username"
+        android:inputType="text"
+
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
+
     <EditText
+        android:id="@+id/txtRegContrasena"
         android:layout_width="200dp"
-        android:layout_gravity="center"
-        android:background="@drawable/stl_edittext"
-        app:backgroundTint="@null"
-        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20sp"
+        android:background="@drawable/stl_edittext"
+        android:gravity="center"
         android:hint="Contraseña"
         android:inputType="textPassword"
+        android:autofillHints="password"
         android:maxLength="20"
-        android:gravity="center"
+        android:padding="12sp"
         android:textColor="@color/white"
-        android:padding="12dp"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
+
     <EditText
+        android:id="@+id/txtRegCContrasena"
         android:layout_width="200dp"
-        android:layout_gravity="center"
-        android:background="@drawable/stl_edittext"
-        app:backgroundTint="@null"
-        android:layout_marginBottom="20dp"
-        android:maxLength="20"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="Repita contraseña"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/stl_edittext"
         android:gravity="center"
+        android:hint="Repita contraseña"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:maxLength="20"
         android:padding="12dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"/>
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom|center">
+
         <Button
+            android:id="@+id/btnRegistrar"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:text="Registrar"
-            app:backgroundTint="@null"
+            android:layout_marginBottom="80dp"
             android:background="@drawable/stl_botones"
-            android:textColor="@color/white"
             android:onClick="onRegistrar"
-            android:textSize="18dp"
-            android:layout_marginBottom="80dp"/>
+            android:text="Registrar"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
     </LinearLayout>
 
 </LinearLayout>
