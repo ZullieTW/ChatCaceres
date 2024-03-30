@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.ChatCáceres" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Fondo -->
+        <item name="android:colorBackground">@color/fondoNegro</item>
+        <item name="colorOnBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.ChatCáceres" parent="Base.Theme.ChatCáceres" />
+</resources>

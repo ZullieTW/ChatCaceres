@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="secundario_fondo">#2c2c2e</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="morado_botones">#74089c</color>
+    <color name="rosa_botones">#9C084D</color>
+    <color name="morado_claro">#A477B5</color>
+
+    <!-- Colores botones -->
+    <color name="morado_botones_ligero">#869C084D</color>
+    <color name="rosa_botones_ligero">#A69C084D</color>
+
+    <!-- Colores primarios -->
+    <color name="fondoNegro">#111111</color>
+
+</resources>

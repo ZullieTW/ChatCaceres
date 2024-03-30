@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Crear cuenta"
+        android:layout_marginTop="40dp"
+        android:gravity="top|center"
+        android:textColor="@color/white"
+        android:textSize="40dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Introduzca un apodo y una contraseña para crear su cuenta, tenga en cuenta que no se pueden cambiar"
+        android:layout_margin="40dp"
+        android:gravity="top|center"
+        android:textColor="@color/white"
+        android:textSize="15dp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="90dp" />
+
+    <EditText
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stl_edittext"
+        app:backgroundTint="@null"
+        android:maxLength="8"
+        android:layout_marginBottom="20dp"
+        android:padding="12dp"
+        android:layout_height="wrap_content"
+        android:hint="Introduzca apodo"
+        android:textColor="@color/white"
+
+        android:gravity="center"
+        android:textColorHint="@color/white" />
+    <EditText
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stl_edittext"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:maxLength="20"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:textColorHint="@color/white"/>
+    <EditText
+        android:layout_width="200dp"
+        android:layout_gravity="center"
+        android:background="@drawable/stl_edittext"
+        app:backgroundTint="@null"
+        android:layout_marginBottom="20dp"
+        android:maxLength="20"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Repita contraseña"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom|center">
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:text="Registrar"
+            app:backgroundTint="@null"
+            android:background="@drawable/stl_botones"
+            android:textColor="@color/white"
+            android:onClick="onRegistrar"
+            android:textSize="18dp"
+            android:layout_marginBottom="80dp"/>
+    </LinearLayout>
+
+</LinearLayout>
