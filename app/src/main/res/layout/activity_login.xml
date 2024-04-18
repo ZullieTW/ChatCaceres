@@ -96,6 +96,7 @@
             android:background="@drawable/stl_botones"
             android:onClick="onRegistrar"
             android:text="Registrar"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:backgroundTint="@null" />

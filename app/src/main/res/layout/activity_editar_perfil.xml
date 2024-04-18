@@ -24,7 +24,7 @@
         android:scaleType="fitCenter"
         android:layout_gravity="center"
         android:contentDescription="Seleccionar imagen"
-        android:layout_marginTop="50sp"
+        android:layout_marginTop="20sp"
         android:src="@drawable/img_avatar" />
 
     <EditText
@@ -32,15 +32,51 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/stl_edittext"
         android:gravity="center"
-        android:hint="Introduzca apodo"
+        android:hint="Apodo"
         android:maxLength="8"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:padding="12sp"
         android:autofillHints="username"
         android:inputType="text"
+
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
+    <EditText
+        android:id="@+id/txtEditContrasena"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/stl_edittext"
+        android:gravity="center"
+        android:hint="Contraseña"
+        android:maxLength="20"
+        android:layout_marginTop="10dp"
+        android:padding="12sp"
+        android:autofillHints="password"
+        android:inputType="textPassword"
+
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
+    <EditText
+        android:id="@+id/txtEditCContrasena"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/stl_edittext"
+        android:gravity="center"
+        android:hint="Confirme contraseña"
+        android:maxLength="20"
+        android:layout_marginTop="10dp"
+        android:padding="12sp"
+        android:autofillHints="password"
+        android:inputType="textPassword"
 
         android:textColor="@color/white"
         android:textColorHint="@color/white"
@@ -49,17 +85,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="bottom|center">
 
         <Button
-            android:id="@+id/btnGuardar"
+            android:id="@+id/btnEditGuardar"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="80dp"
             android:background="@drawable/stl_botones"
             android:onClick="onGuardar"
             android:text="Guardar"
+            android:paddingEnd="10dp"
+            android:layout_marginBottom="40dp"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btnEditCancelar"
+            android:onClick="onEditRegistrar"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="40dp"
+            android:paddingStart="10dp"
+            android:background="@drawable/stl_botones"
+            android:text="Cancelar"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:backgroundTint="@null" />

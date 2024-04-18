@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         //Editar perfil
-        startActivity(new Intent(this, CrearPerfil.class));
+        startActivity(new Intent(this, MainActivity.class));
         this.finish();
     }
 }
