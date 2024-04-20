@@ -26,4 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public void onEditUsuario(View view) {
         startActivity(new Intent(this, EditarPerfil.class));
     }
+
+    public void onAñadirChat(View view) {
+    }
 }
