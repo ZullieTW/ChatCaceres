@@ -14,11 +14,13 @@ import com.google.firebase.Firebase;
 
 public class MainActivity extends AppCompatActivity {
     public Firebase bd;
+    private ChatsFragment chatsFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
     }
 
     public void onEditUsuario(View view) {
