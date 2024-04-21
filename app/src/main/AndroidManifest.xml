@@ -13,13 +13,19 @@
         android:theme="@style/Theme.ChatCáceres"
         tools:targetApi="31">
         <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BuscardorUsuario"
+            android:exported="false" />
+        <activity
             android:name=".CrearPerfil"
             android:exported="false" />
         <activity
             android:name=".EditarPerfil"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".RegistrarActivity"
             android:exported="false" />
         <activity
             android:name=".PantallaInicial"

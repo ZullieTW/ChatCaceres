@@ -6,41 +6,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".RegistrarActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
+        android:text="Crear cuenta"
         android:layout_marginTop="40dp"
         android:gravity="top|center"
         android:textColor="@color/white"
         android:textSize="40sp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Introduzca un apodo y una contraseña para crear su cuenta, tenga en cuenta que no se pueden cambiar"
+        android:layout_margin="40dp"
+        android:gravity="top|center"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
 
     <Space
         android:layout_width="wrap_content"
-        android:layout_height="150sp" />
+        android:layout_height="90sp" />
 
     <EditText
-        android:id="@+id/txtLoginEmail"
+        android:id="@+id/txtRegApodo"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:background="@drawable/stl_edittext"
         android:gravity="center"
-        android:hint="Email"
+        android:hint="Introduzca apodo"
+        android:maxLength="8"
         android:padding="12sp"
-        android:autofillHints="emailAddress"
-        android:inputType="textEmailAddress"
+        android:autofillHints="username"
+        android:inputType="text"
 
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         app:backgroundTint="@null" />
 
     <EditText
-        android:id="@+id/txtLoginContrasena"
+        android:id="@+id/txtRegContrasena"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -56,32 +65,49 @@
         android:textColorHint="@color/white"
         app:backgroundTint="@null" />
 
+    <EditText
+        android:id="@+id/txtRegCContrasena"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/stl_edittext"
+        android:gravity="center"
+        android:hint="Repita contraseña"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:maxLength="20"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="bottom|center">
+
         <Button
-            android:id="@+id/btnLoginAcceder"
+            android:id="@+id/btnRegRegistrar"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/stl_botones"
-            android:onClick="onLoginAcceder"
-            android:text="Acceder"
+            android:onClick="onRegistroRegistrar"
+            android:text="Registrar"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp"
             app:backgroundTint="@null" />
         <Button
-            android:id="@+id/btnRegistrar"
+            android:id="@+id/btnRegCancelar"
             android:layout_width="150dp"
             android:layout_height="50dp"
             android:layout_marginBottom="80dp"
             android:background="@drawable/stl_botones"
-            android:onClick="onLoginRegistrar"
-            android:text="Registrar"
+            android:onClick="onRegistroCancelar"
+            android:text="Cancelar"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="18sp"
