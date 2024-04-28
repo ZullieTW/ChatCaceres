@@ -24,7 +24,7 @@
 
     <EditText
         android:id="@+id/txtLoginEmail"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
@@ -41,7 +41,7 @@
 
     <EditText
         android:id="@+id/txtLoginContrasena"
-        android:layout_width="200dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20sp"
@@ -60,13 +60,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:gravity="bottom|center">
         <Button
+            android:layout_marginBottom="30dp"
             android:id="@+id/btnLoginAcceder"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="20dp"
             android:background="@drawable/stl_botones"
             android:onClick="onLoginAcceder"
             android:text="Acceder"
@@ -74,11 +74,14 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             app:backgroundTint="@null" />
+        <Space
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"/>
         <Button
+            android:layout_marginBottom="30dp"
             android:id="@+id/btnRegistrar"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="80dp"
             android:background="@drawable/stl_botones"
             android:onClick="onLoginRegistrar"
             android:text="Registrar"
