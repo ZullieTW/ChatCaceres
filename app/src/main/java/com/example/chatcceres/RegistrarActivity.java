@@ -7,9 +7,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.chatcceres.modelos.Usuario;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -50,7 +55,6 @@ public class RegistrarActivity extends AppCompatActivity {
         usuario = txtUsuario.getText().toString().trim();
         contrasena = txtContrasena.getText().toString().trim();
         ccontrasena = txtConfirmacion_contrasena.getText().toString().trim();
-
         if (usuario.isEmpty() || contrasena.isEmpty() || ccontrasena.isEmpty()) {
             Toast.makeText(this, "Debe rellenar todos los campos", Toast.LENGTH_SHORT).show();
         } else if (!EmailValidator.getInstance().isValid(usuario)) {
@@ -60,10 +64,19 @@ public class RegistrarActivity extends AppCompatActivity {
         } else {
             fblogin.createUserWithEmailAndPassword(usuario, contrasena).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
-                    MainActivity.usuario = fblogin.getCurrentUser();
                     Toast.makeText(this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, MainActivity.class));
-                    this.finish();
+                    FirebaseUtil.detallesUsuario().set(new Usuario(FirebaseUtil.getEmail(), FirebaseUtil.getUid(), Timestamp.now())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()){
+                                startActivity(new Intent(RegistrarActivity.this, LoginActivity.class));
+                                finish();
+                            } else {
+                                finish();
+                            }
+                        }
+                    });
+
                 } else {
                     String error = ((FirebaseAuthException) task.getException()).getErrorCode();
                     switch (error) {

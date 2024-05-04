@@ -47,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             fblogin.signInWithEmailAndPassword(usuario, contrasena).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
-                    MainActivity.usuario = fblogin.getCurrentUser();
                     startActivity(new Intent(this, MainActivity.class));
                     this.finish();
                 } else {

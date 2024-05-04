@@ -14,20 +14,22 @@ import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-    private ChatsFragment chatsFragment;
     static public FirebaseUser usuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        usuario = FirebaseUtil.getUsuario();
     }
 
     public void onEditUsuario(View view) {
         startActivity(new Intent(this, EditarPerfil.class));
     }
 
-    public void onAñadirChat(View view) {
+    public void onAnadirChat(View view) {
+        startActivity(new Intent(this, BuscardorActivity.class));
     }
 }

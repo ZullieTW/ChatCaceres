@@ -33,7 +33,7 @@ public class EditarPerfil extends AppCompatActivity {
         txtContrasena = findViewById(R.id.txtEditContrasena);
         txtConfirmacion_contrasena = findViewById(R.id.txtEditCContrasena);
 
-        usuarioRegistrado = MainActivity.usuario;
+        usuarioRegistrado = FirebaseUtil.getUsuario();
     }
 
     public void onEditGuardar(View view) {
@@ -66,6 +66,12 @@ public class EditarPerfil extends AppCompatActivity {
 
     public void onEditCancelar(View view) {
         startActivity(new Intent(this, MainActivity.class));
+        this.finish();
+    }
+
+    public void onCerrarSesion(View view) {
+        FirebaseUtil.getAuth().signOut();
+        startActivity(new Intent(this, LoginActivity.class));
         this.finish();
     }
 }

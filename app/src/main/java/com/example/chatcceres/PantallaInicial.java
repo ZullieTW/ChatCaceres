@@ -26,8 +26,14 @@ public class PantallaInicial extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(PantallaInicial.this, LoginActivity.class));
-                finish();
+                if(FirebaseUtil.getUsuario() != null){
+                    startActivity(new Intent(PantallaInicial.this, MainActivity.class));
+                    finish();
+                } else {
+                    startActivity(new Intent(PantallaInicial.this, LoginActivity.class));
+                    finish();
+                }
+
             }
         }, 1000);
     }
