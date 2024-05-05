@@ -10,12 +10,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.chatcceres.modelos.Usuario;
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.Query;
+import com.example.chatcceres.adapter.BusquedaUsuarioAdapter;
 
 public class BuscardorActivity extends AppCompatActivity {
 
     private EditText txtBuscador;
     private RecyclerView listaResultados;
+
+    private BusquedaUsuarioAdapter adapterRecyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +34,8 @@ public class BuscardorActivity extends AppCompatActivity {
 
         txtBuscador = findViewById(R.id.txtBuscador);
         listaResultados = findViewById(R.id.ly_resultados_busqueda);
+
+        txtBuscador.requestFocus();
     }
 
     public void onBotonAtras(View view) {
@@ -43,5 +55,36 @@ public class BuscardorActivity extends AppCompatActivity {
     }
     private void prepararResultados(String busqueda){
 
+        Query query = FirebaseUtil.usuariosCollectionReference().whereGreaterThanOrEqualTo("email", busqueda);
+        FirestoreRecyclerOptions<Usuario> options = new FirestoreRecyclerOptions.Builder<Usuario>().setQuery(query,Usuario.class).build();
+
+        adapterRecyclerView = new BusquedaUsuarioAdapter(options, getApplicationContext());
+        listaResultados.setLayoutManager(new LinearLayoutManager(this));
+        listaResultados.setAdapter(adapterRecyclerView);
+        adapterRecyclerView.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (adapterRecyclerView != null){
+            adapterRecyclerView.stopListening();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(adapterRecyclerView != null){
+            adapterRecyclerView.startListening();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(adapterRecyclerView != null){
+            adapterRecyclerView.startListening();
+        }
     }
 }

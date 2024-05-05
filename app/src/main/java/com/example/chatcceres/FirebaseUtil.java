@@ -3,6 +3,7 @@ package com.example.chatcceres;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -26,5 +27,9 @@ public class FirebaseUtil {
     }
     public static DocumentReference detallesUsuario(){
         return FirebaseFirestore.getInstance().collection("usuarios").document(getUid());
+    }
+
+    public static CollectionReference usuariosCollectionReference(){
+        return FirebaseFirestore.getInstance().collection("usuarios");
     }
 }

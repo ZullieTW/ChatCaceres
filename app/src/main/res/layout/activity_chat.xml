@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <RelativeLayout
+        android:id="@+id/ly_chat_relative"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/morado_botones"
+        android:paddingStart="10dp"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:id="@+id/txtChatUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="false"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/btn_atras"
+            android:text="Usuario"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_margin="3dp"
+            android:id="@+id/btn_atras"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="false"
+            android:layout_marginEnd="1dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:onClick="onBotonAtrasChat"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ly_chat_enviar"
+        android:layout_below="@id/ly_chat_relative">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <RelativeLayout
+        android:id="@+id/ly_chat_enviar"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Escribir mensaje..."
+            android:background="@drawable/stl_edittext"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:textColorHint="@color/white"
+            android:textColor="@color/white"
+            android:layout_toLeftOf="@id/btnEnviar"
+            android:layout_centerInParent="true"/>
+        <ImageButton
+            android:id="@+id/btnEnviar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_enviar"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
