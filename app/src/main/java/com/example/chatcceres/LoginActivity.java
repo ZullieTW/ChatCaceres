@@ -10,6 +10,10 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.apache.commons.validator.routines.EmailValidator;
@@ -47,9 +51,23 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(new Intent(this, MainActivity.class));
                     this.finish();
                 } else {
-                    Toast.makeText(this, "Los datos no son correctos", Toast.LENGTH_SHORT).show();
-                    txtUsuario.setText("");
-                    txtContrasena.setText("");
+                    String error = ((FirebaseAuthException) task.getException()).getErrorCode();
+                    switch (error) {
+                        case "ERROR_WRONG_PASSWORD":
+                            Toast.makeText(this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                            txtUsuario.setText("");
+                            txtContrasena.setText("");
+                            break;
+                        case "ERROR_USER_NOT_FOUND":
+                            Toast.makeText(this, "La cuenta no existe", Toast.LENGTH_SHORT).show();
+                            txtUsuario.setText("");
+                            txtContrasena.setText("");
+                            break;
+                        default:
+                            Toast.makeText(this, "Error al iniciar sesión", Toast.LENGTH_SHORT).show();
+                            txtUsuario.setText("");
+                            txtContrasena.setText("");
+                    }
                 }
             });
         }
