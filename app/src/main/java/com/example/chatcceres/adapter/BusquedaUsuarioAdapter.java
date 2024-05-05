@@ -1,16 +1,18 @@
 package com.example.chatcceres.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.chatcceres.FirebaseUtil;
+import com.example.chatcceres.ChatActivity;
+import com.example.chatcceres.utils.AndroidUtil;
+import com.example.chatcceres.utils.FirebaseUtil;
 import com.example.chatcceres.R;
 import com.example.chatcceres.modelos.Usuario;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -36,7 +38,10 @@ public class BusquedaUsuarioAdapter extends FirestoreRecyclerAdapter<Usuario, Bu
         }
 
         modeloUsuarioViewHolder.itemView.setOnClickListener(v -> {
-            Toast.makeText(context, "Abrir chat", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(context, ChatActivity.class);
+            AndroidUtil.pasarDatosUsuarioEnIntent(intent, usuario);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         });
     }
 

@@ -9,8 +9,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
+import com.example.chatcceres.utils.FirebaseUtil;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.apache.commons.validator.routines.EmailValidator;

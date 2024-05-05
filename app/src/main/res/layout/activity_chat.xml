@@ -41,6 +41,7 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ly_chat_mensajes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/ly_chat_enviar"
@@ -53,9 +54,11 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
         android:padding="8dp">
 
         <EditText
+            android:id="@+id/txtInputChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Escribir mensaje..."
