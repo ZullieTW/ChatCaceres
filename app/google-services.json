@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1029819855459",
+    "project_id": "chat-caceres",
+    "storage_bucket": "chat-caceres.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1029819855459:android:a50ddb579d2d8a04987e56",
+        "android_client_info": {
+          "package_name": "com.example.chatcceres"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUeXdOunFBvLTRkNkogGp3HE10dIIxatQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
