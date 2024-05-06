@@ -9,16 +9,26 @@ public class Chat {
     private List<String> idUsuarios;
     private Timestamp momentoUltimoMensaje;
     private String autorIdUltimoMensaje;
+    private String ultimoMensaje;
 
 
     public Chat() {
     }
 
-    public Chat(String id, List<String> idUsuarios, Timestamp momentoUltimoMensaje, String autorIdUltimoMensaje) {
+    public String getUltimoMensaje() {
+        return ultimoMensaje;
+    }
+
+    public void setUltimoMensaje(String ultimoMensaje) {
+        this.ultimoMensaje = ultimoMensaje;
+    }
+
+    public Chat(String id, List<String> idUsuarios, Timestamp momentoUltimoMensaje, String autorIdUltimoMensaje, String ultimoMensaje) {
         this.id = id;
         this.idUsuarios = idUsuarios;
         this.momentoUltimoMensaje = momentoUltimoMensaje;
         this.autorIdUltimoMensaje = autorIdUltimoMensaje;
+        this.ultimoMensaje = ultimoMensaje;
     }
 
     public String getId() {

@@ -11,13 +11,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chatcceres.adapter.BusquedaUsuarioAdapter;
+import com.example.chatcceres.adapter.ChatAdapter;
 import com.example.chatcceres.modelos.Chat;
+import com.example.chatcceres.modelos.MensajeChat;
 import com.example.chatcceres.modelos.Usuario;
 import com.example.chatcceres.utils.AndroidUtil;
 import com.example.chatcceres.utils.FirebaseUtil;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.Query;
 
 import org.checkerframework.checker.units.qual.C;
 
@@ -30,6 +36,7 @@ public class ChatActivity extends AppCompatActivity {
     private EditText txtInput;
     private Usuario receptor;
     private RecyclerView mensajes;
+    private ChatAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,34 +44,74 @@ public class ChatActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_chat);
 
+        receptor = AndroidUtil.getDatosUsuarioDeIntent(getIntent());
+        chatId = FirebaseUtil.getChatId(FirebaseUtil.getUid(), receptor.getUid());
+
+
         mensajes = findViewById(R.id.ly_chat_mensajes);
         txtInput = findViewById(R.id.txtInputChat);
         TextView txtReceptor = findViewById(R.id.txtChatUsuario);
 
 
-        receptor = AndroidUtil.getDatosUsuarioDeIntent(this.getIntent());
         txtReceptor.setText(receptor.getEmail());
-        chatId = FirebaseUtil.getChatId(FirebaseUtil.getUid(), receptor.getUid());
 
         getChat();
+        prepararVistaMensajes();
     }
 
     private  void getChat(){
-        FirebaseUtil.chatsCollectionReference(chatId).get().addOnCompleteListener(task -> {
-            chat = task.getResult().toObject(Chat.class);
-            if(chat == null){
-                chat = new Chat(
-                        chatId,
-                        Arrays.asList(FirebaseUtil.getUid(),receptor.getUid()),
-                        Timestamp.now(),
-                        ""
-                );
-                FirebaseUtil.chatsCollectionReference(chatId).set(chat);
+        FirebaseUtil.getChatsCollectionReference(chatId).get().addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                chat = task.getResult().toObject(Chat.class);
+                if(chat==null){
+                    //first time chat
+                    chat = new Chat(
+                            chatId,
+                            Arrays.asList(FirebaseUtil.getUid(),receptor.getUid()),
+                            Timestamp.now(),
+                            FirebaseUtil.getUid(),
+                            ""
+                    );
+                    FirebaseUtil.getChatsCollectionReference(chatId).set(chat);
+                }
             }
         });
     }
     public void onBotonAtrasChat(View view) {
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    public void onEnviarMensaje(View view) {
+        String mensaje = txtInput.getText().toString().trim();
+        if (!mensaje.isEmpty()){
+            enviarMensaje(mensaje);
+        }
+    }
+    private void enviarMensaje(String mensaje){
+        chat.setMomentoUltimoMensaje(Timestamp.now());
+        chat.setUltimoMensaje(mensaje);
+        chat.setAutorIdUltimoMensaje(FirebaseUtil.getUid());
+        System.out.println(chat.getUltimoMensaje());
+        FirebaseUtil.getChatsCollectionReference(chatId).set(chat);
+
+
+        MensajeChat mensajeChat = new MensajeChat(mensaje, FirebaseUtil.getUid(), Timestamp.now());
+        FirebaseUtil.getMensajeChatCollectionReference(chatId).add(mensajeChat).addOnCompleteListener(task -> {
+            if(task.isSuccessful()){
+                txtInput.setText("");
+            }
+        });
+    }
+    private void prepararVistaMensajes(){
+        Query query = FirebaseUtil.getMensajeChatCollectionReference(chatId).orderBy("hora", Query.Direction.DESCENDING);
+        FirestoreRecyclerOptions<MensajeChat> options = new FirestoreRecyclerOptions.Builder<MensajeChat>().setQuery(query,MensajeChat.class).build();
+
+        adapter = new ChatAdapter(options, getApplicationContext());
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        mensajes.setLayoutManager(manager);
+        mensajes.setAdapter(adapter);
+        adapter.startListening();
     }
 }

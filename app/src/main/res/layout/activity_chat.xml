@@ -73,6 +73,7 @@
             android:id="@+id/btnEnviar"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:onClick="onEnviarMensaje"
             android:src="@drawable/ic_enviar"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"

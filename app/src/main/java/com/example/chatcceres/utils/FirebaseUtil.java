@@ -29,10 +29,6 @@ public class FirebaseUtil {
         return FirebaseFirestore.getInstance().collection("usuarios").document(getUid());
     }
 
-    public static DocumentReference chatsCollectionReference(String chatId){
-        return FirebaseFirestore.getInstance().collection("chats").document(chatId);
-    }
-
     public static CollectionReference usuariosCollectionReference(){
         return FirebaseFirestore.getInstance().collection("usuarios");
     }
@@ -43,5 +39,11 @@ public class FirebaseUtil {
         } else {
             return usuario2Id+"_"+usuario1Id;
         }
+    }
+    public static CollectionReference getMensajeChatCollectionReference(String chatId){
+        return getChatsCollectionReference(chatId).collection("mensajes");
+    }
+    public static DocumentReference getChatsCollectionReference(String chatId){
+        return FirebaseFirestore.getInstance().collection("chatrooms").document(chatId);
     }
 }
