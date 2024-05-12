@@ -43,6 +43,10 @@
         android:layout_below="@id/ly_relative"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ly_chat_recientes"/>
         <ImageButton
             android:onClick="onAnadirChat"
             android:scaleY="2"

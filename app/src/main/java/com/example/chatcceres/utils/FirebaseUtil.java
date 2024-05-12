@@ -7,6 +7,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.List;
+
 public class FirebaseUtil {
 
     public static FirebaseAuth getAuth(){
@@ -45,5 +47,16 @@ public class FirebaseUtil {
     }
     public static DocumentReference getChatsCollectionReference(String chatId){
         return FirebaseFirestore.getInstance().collection("chatrooms").document(chatId);
+    }
+    public static CollectionReference todosChatsCollectionReference(){
+        return FirebaseFirestore.getInstance().collection("chatrooms");
+    }
+
+    public static DocumentReference getOtroUsuarioId(List<String> usuariosId){
+        if (usuariosId.get(0).equals(getUid())){
+            return usuariosCollectionReference().document(usuariosId.get(1));
+        } else {
+            return usuariosCollectionReference().document(usuariosId.get(0));
+        }
     }
 }

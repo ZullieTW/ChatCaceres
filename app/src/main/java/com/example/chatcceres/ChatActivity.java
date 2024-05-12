@@ -2,8 +2,11 @@ package com.example.chatcceres;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -31,6 +34,7 @@ import java.util.Arrays;
 
 public class ChatActivity extends AppCompatActivity {
 
+    private ImageButton btnEnviar;
     private Chat chat;
     private String chatId;
     private EditText txtInput;
@@ -47,7 +51,7 @@ public class ChatActivity extends AppCompatActivity {
         receptor = AndroidUtil.getDatosUsuarioDeIntent(getIntent());
         chatId = FirebaseUtil.getChatId(FirebaseUtil.getUid(), receptor.getUid());
 
-
+        btnEnviar = findViewById(R.id.btnEnviar);
         mensajes = findViewById(R.id.ly_chat_mensajes);
         txtInput = findViewById(R.id.txtInputChat);
         TextView txtReceptor = findViewById(R.id.txtChatUsuario);
@@ -83,16 +87,23 @@ public class ChatActivity extends AppCompatActivity {
     }
 
     public void onEnviarMensaje(View view) {
+        btnEnviar.setClickable(false);
         String mensaje = txtInput.getText().toString().trim();
         if (!mensaje.isEmpty()){
             enviarMensaje(mensaje);
         }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                btnEnviar.setClickable(true);
+            }
+        }, 700);
+
     }
     private void enviarMensaje(String mensaje){
         chat.setMomentoUltimoMensaje(Timestamp.now());
         chat.setUltimoMensaje(mensaje);
         chat.setAutorIdUltimoMensaje(FirebaseUtil.getUid());
-        System.out.println(chat.getUltimoMensaje());
         FirebaseUtil.getChatsCollectionReference(chatId).set(chat);
 
 
@@ -102,6 +113,7 @@ public class ChatActivity extends AppCompatActivity {
                 txtInput.setText("");
             }
         });
+
     }
     private void prepararVistaMensajes(){
         Query query = FirebaseUtil.getMensajeChatCollectionReference(chatId).orderBy("hora", Query.Direction.DESCENDING);
@@ -113,5 +125,35 @@ public class ChatActivity extends AppCompatActivity {
         mensajes.setLayoutManager(manager);
         mensajes.setAdapter(adapter);
         adapter.startListening();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (adapter != null){
+            adapter.stopListening();
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(adapter != null){
+            adapter.startListening();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(adapter != null){
+            adapter.startListening();
+        }
     }
 }
