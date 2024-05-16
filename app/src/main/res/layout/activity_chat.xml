@@ -58,6 +58,7 @@
         android:padding="8dp">
 
         <EditText
+            android:autoSizeTextType="uniform"
             android:id="@+id/txtInputChat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -36,7 +36,16 @@ public class BuscardorActivity extends AppCompatActivity {
         txtBuscador.requestFocus();
     }
 
-    public void onBotonAtras(View view) {
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        this.finish();
+    }
+    public void onBotonAtrasChat(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
         this.finish();
     }
 

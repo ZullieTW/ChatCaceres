@@ -81,10 +81,7 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
     }
-    public void onBotonAtrasChat(View view) {
-        startActivity(new Intent(this, MainActivity.class));
-        finish();
-    }
+
 
     public void onEnviarMensaje(View view) {
         btnEnviar.setClickable(false);
@@ -130,7 +127,14 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        this.finish();
+    }
+    public void onBotonAtrasChat(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        this.finish();
     }
 
     @Override
