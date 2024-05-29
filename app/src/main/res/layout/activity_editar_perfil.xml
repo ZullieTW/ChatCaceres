@@ -39,14 +39,14 @@
         app:backgroundTint="@null" />
 
     <EditText
-        android:id="@+id/txtEditContrasena"
+        android:id="@+id/txtEditContrasenaActual"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20sp"
         android:background="@drawable/stl_edittext"
         android:gravity="center"
-        android:hint="Contraseña"
+        android:hint="Contraseña actual"
         android:inputType="textPassword"
         android:autofillHints="password"
         android:maxLength="20"
@@ -56,14 +56,31 @@
         app:backgroundTint="@null" />
 
     <EditText
-        android:id="@+id/txtEditCContrasena"
+        android:id="@+id/txtEditContrasenaNueva"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/stl_edittext"
+        android:gravity="center"
+        android:hint="Nueva contraseña"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:maxLength="20"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        app:backgroundTint="@null" />
+    <EditText
+        android:id="@+id/txtEditCContrasenaNueva"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:background="@drawable/stl_edittext"
         android:gravity="center"
-        android:hint="Repita contraseña"
+        android:hint="Repita nueva contraseña"
         android:inputType="textPassword"
         android:autofillHints="password"
         android:maxLength="20"

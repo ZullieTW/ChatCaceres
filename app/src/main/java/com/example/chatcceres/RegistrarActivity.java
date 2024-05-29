@@ -61,15 +61,12 @@ public class RegistrarActivity extends AppCompatActivity {
             fblogin.createUserWithEmailAndPassword(usuario, contrasena).addOnCompleteListener(this, task -> {
                 if (task.isSuccessful()) {
                     Toast.makeText(this, "Registrado con éxito", Toast.LENGTH_SHORT).show();
-                    FirebaseUtil.detallesUsuario().set(new Usuario(FirebaseUtil.getEmail(), FirebaseUtil.getUid(), Timestamp.now())).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()){
-                                startActivity(new Intent(RegistrarActivity.this, LoginActivity.class));
-                                finish();
-                            } else {
-                                finish();
-                            }
+                    FirebaseUtil.detallesUsuario().set(new Usuario(FirebaseUtil.getEmail(), FirebaseUtil.getUid(), Timestamp.now())).addOnCompleteListener(last_task -> {
+                        if (last_task.isSuccessful()){
+                            startActivity(new Intent(RegistrarActivity.this, LoginActivity.class));
+                            finish();
+                        } else {
+                            finish();
                         }
                     });
 
